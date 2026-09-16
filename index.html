@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Humanoid-WM: a physics-informed world model for sample-efficient learning, adaptation, and test-time planning in humanoid control.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Humanoid-WM | Anonymous Project Page</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="hero" id="top">
+  <p class="eyebrow">Anonymous research project</p>
+  <h1><span class="project-name">Humanoid<span class="accent">-WM</span></span><span class="title-line">Enabling Sample-Efficient Learning and<br class="desktop-break"> Test-Time Planning for Humanoid Control<br class="desktop-break"> with World Models</span></h1>
+  <p class="authors">Anonymous Authors</p>
+  <p class="review-note">Supplementary project page for double-blind review</p>
+  <div class="resource-links">
+    <a class="pill" href="#method"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H4zm16 0h-4a3 3 0 0 0-3 3v14a4 4 0 0 1 4-2h3z"/></svg>Method</a>
+    <a class="pill" href="#results"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v17h17M8 16v-5m5 5V6m5 10V9"/></svg>Results</a>
+    <span class="pill unavailable" aria-label="Code: coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg>Code <span class="soon">Coming Soon</span></span>
+  </div>
+</header>
+<main id="main">
+  <section class="overview wide" aria-labelledby="overview-title">
+    <h2 id="overview-title" class="sr-only">Overview</h2>
+    <div class="overview-layout">
+      <figure class="framework-figure">
+        <a href="assets/framework.webp" class="zoomable" data-lightbox aria-label="Enlarge the Humanoid-WM framework"><img src="assets/framework.webp" width="1186" height="1227" alt="Humanoid-WM predicts forces at abstract body contact points and combines them with Lagrangian dynamics, supporting learning, fine-tuning, and test-time planning." fetchpriority="high"></a>
+      </figure>
+      <div class="overview-copy">
+        <p class="section-kicker">One world model. Three capabilities.</p>
+        <h2>Learn the interactions.<br>Keep the physics.</h2>
+        <p>Predict contact forces instead of learning whole-body dynamics from scratch. Humanoid-WM combines learned interactions with analytical rigid-body dynamics to support learning and planning.</p>
+        <ol class="capabilities">
+          <li><span>01</span><div><h3>Learn from scratch</h3><p>Train whole-body tracking policies with limited environment interaction.</p></div></li>
+          <li><span>02</span><div><h3>Adapt with limited data</h3><p>Fine-tune the policy and world model after transfer to a new simulator.</p></div></li>
+          <li><span>03</span><div><h3>Plan at test time</h3><p>Improve action selection under unseen object masses with both components frozen.</p></div></li>
+        </ol>
+      </div>
+    </div>
+    <p class="figure-caption"><strong>Overview.</strong> Abstract body contact points provide a shared representation for whole-body policy learning, simulator adaptation, and model-predictive control. All experiments presented here are conducted in simulation.</p>
+  </section>
+
+  <section class="section abstract" id="abstract">
+    <div class="text-width">
+      <h2>Abstract</h2>
+      <p>Humanoid robots offer a versatile platform for general-purpose agents, yet learning robust control policies remains highly sample-inefficient. Model-based reinforcement learning can improve sample efficiency, but conventional world models often overlook the physical structure of humanoid bodies, requiring substantial interaction data to learn generalizable dynamics.</p>
+      <p>We propose <strong>Humanoid-WM</strong>, a physics-informed world model that incorporates Lagrangian dynamics and represents humanoid-environment interactions through abstract contact points defined on the robot body. Rather than directly predicting state transitions, Humanoid-WM predicts forces at these contact points and integrates them into the dynamics, providing a contact-aware inductive bias for modeling whole-body motion.</p>
+      <p>Experiments demonstrate three key capabilities: sample-efficient learning of diverse whole-body motion-tracking policies from scratch; efficient fine-tuning of both policy and world model in new environments; and test-time planning via Model Predictive Path Integral (MPPI) control without fine-tuning either component. Test-time planning improves success rates and tracking performance under unseen object masses.</p>
+    </div>
+  </section>
+
+  <section class="section wide" id="method">
+    <p class="section-kicker centered">The model</p>
+    <h2>A Contact-Aware World Model</h2>
+    <p class="intro">Known mechanics handle rigid-body motion. A learned model supplies the interaction forces.</p>
+    <div class="method-flow" aria-label="Model prediction pipeline">
+      <div><span class="step">01 / Predict</span><h3>Latent contact forces</h3><p>Predict a 3D Cartesian force at each predefined abstract body contact point.</p></div>
+      <div><span class="step">02 / Map</span><h3>Analytical Jacobians</h3><p>Map point forces into a configuration-dependent generalized-force residual.</p></div>
+      <div><span class="step">03 / Integrate</span><h3>Lagrangian dynamics</h3><p>Combine the residual with known rigid-body dynamics and the actuator model to predict the next state.</p></div>
+    </div>
+    <p class="method-note">Trained end to end from state transitions. <strong>No direct force supervision.</strong></p>
+  </section>
+
+  <section class="section results wide" id="results">
+    <p class="section-kicker centered">01 / Learning</p>
+    <h2>Sample-Efficient Whole-Body Control</h2>
+    <p class="intro">Learning Run, Walk, and Jump from scratch in Isaac Sim, using reference motions from LAFAN1.</p>
+    <figure>
+      <a href="assets/learning.webp" class="zoomable" data-lightbox aria-label="Enlarge whole-body learning results"><img src="assets/learning.webp" width="2551" height="753" alt="Evaluation-return curves for Run, Walk, and Jump comparing Humanoid-WM, LIFT, MBPO, PPO, and SAC." loading="lazy"></a>
+      <figcaption>Evaluation returns averaged over eight random seeds. The horizontal axis uses a piecewise-linear scale, expanding 0–0.2M and compressing 0.2–20M environment transitions. Model-generated transitions are excluded.</figcaption>
+    </figure>
+    <div class="finding"><strong>About 100× fewer environment interactions</strong><p>Humanoid-WM attains strong tracking returns with approximately 1/100 as many interactions as the model-free baselines. SAC and PPO can reach comparable or higher final returns. Humanoid-WM outperforms LIFT on Run and Walk and performs comparably on Jump.</p></div>
+  </section>
+
+  <section class="section shaded" id="adaptation">
+    <div class="wide">
+      <p class="section-kicker centered">02 / Adaptation</p>
+      <h2>Fine-Tuning in a New Simulator</h2>
+      <p class="intro">Transfer a pretrained G1 fighting-motion policy from MuJoCo Playground to Brax, then update both the policy and world model with limited target-environment data.</p>
+      <figure class="medium-figure">
+        <a href="assets/adaptation.webp" class="zoomable" data-lightbox aria-label="Enlarge simulator adaptation results"><img src="assets/adaptation.webp" width="2496" height="1116" alt="Fine-tuning curves show Humanoid-WM recovering evaluation return and episode length after an initial drop; LIFT remains low over the evaluated budget." loading="lazy"></a>
+        <figcaption>Evaluation return and episode length during fine-tuning on the LAFAN1 fighting motion. Deterministic actions collect environment data; stochastic exploration occurs in model rollouts.</figcaption>
+      </figure>
+      <p class="text-width">After an initial performance drop, Humanoid-WM recovers to a high evaluation reward and longer episodes. The explicit mapping from local forces to generalized forces supports adaptation on a task with irregular, nonperiodic contact transitions.</p>
+    </div>
+  </section>
+
+  <section class="section wide" id="planning">
+    <p class="section-kicker centered">03 / Test-time planning</p>
+    <h2>Frozen Models. Better Action Selection.</h2>
+    <p class="intro">MPPI uses Humanoid-WM to evaluate candidate action sequences for box carrying and placement under unseen object masses, without retraining the policy or world model.</p>
+    <figure class="medium-figure">
+      <a href="assets/box-carrying.webp" class="zoomable" data-lightbox aria-label="Enlarge box-carrying sequence"><img src="assets/box-carrying.webp" width="1916" height="1327" alt="Five simulation snapshots: start, bend to grasp, lift, lower for release, and stand after replacement." loading="lazy"></a>
+      <figcaption>Successful box carrying and placement in simulation with Humanoid-WM-based MPPI planning.</figcaption>
+    </figure>
+    <div class="metrics" aria-label="Overall planning results">
+      <div><strong>58.5<span>%</span></strong><p>Deterministic policy</p></div>
+      <div><strong class="accent">66.6<span>%</span></strong><p>MPPI · K = 5,000</p></div>
+      <div><strong class="accent">+8.1<span> pp</span></strong><p>Overall success improvement</p></div>
+    </div>
+    <div class="table-wrap" role="region" aria-label="Success rates by box mass" tabindex="0">
+      <table>
+        <caption>Success rate (%) · 500 trials per mass · 2,000 trials per method</caption>
+        <thead><tr><th scope="col">Method</th><th scope="col">1 kg <span>Training mass</span></th><th scope="col">2 kg</th><th scope="col">3 kg</th><th scope="col">4 kg</th><th scope="col">Overall</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Policy (deterministic)</th><td><strong>95.0</strong></td><td>76.6</td><td>49.2</td><td>13.2</td><td>58.5</td></tr>
+          <tr><th scope="row">Policy (stochastic)</th><td>91.6</td><td>85.0</td><td>34.8</td><td>6.0</td><td>54.4</td></tr>
+          <tr><th scope="row">MPPI · K = 512</th><td>93.6</td><td>90.6</td><td>55.6</td><td>15.2</td><td>63.7</td></tr>
+          <tr class="highlight"><th scope="row">MPPI · K = 5,000</th><td>92.6</td><td><strong>92.2</strong></td><td><strong>62.0</strong></td><td>19.8</td><td><strong>66.6</strong></td></tr>
+          <tr><th scope="row">MPPI · K = 30,000</th><td>91.6</td><td>90.8</td><td>60.4</td><td><strong>20.8</strong></td><td>65.9</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="figure-caption">Selected settings from the manuscript. Overall 95% confidence intervals: deterministic policy, 56.3–60.6%; MPPI K = 5,000, 64.6–68.7%. The deterministic policy remains strongest at the training mass; MPPI K = 5,000 improves success at all three heavier masses.</p>
+    <details><summary>Planning budget and inference time</summary><div class="details-content"><p>Larger planning populations generally improve success, but the gains are not monotonic. K = 5,000 gives the highest observed overall success; increasing K to 30,000 improves the 4 kg result but does not improve overall success.</p><p>With horizon H = 12 on a single NVIDIA RTX 4090, model-inference time is 145.32 ms/step for K = 5,000 and 675.07 ms/step for K = 30,000. These are per-step model-inference measurements, not end-to-end real-time control rates.</p></div></details>
+  </section>
+
+  <section class="section shaded" id="prediction">
+    <div class="wide">
+      <p class="section-kicker centered">Model analysis</p>
+      <h2>Accurate Multi-Step Predictions</h2>
+      <p class="intro">Compare Humanoid-WM and LIFT before and after fine-tuning on the same Brax data, with the policy held fixed.</p>
+      <figure class="prediction-figure">
+        <a href="assets/prediction.webp" class="zoomable" data-lightbox aria-label="Enlarge world-model prediction results"><img src="assets/prediction.webp" width="2600" height="2186" alt="Multi-step prediction errors and trajectory comparisons for body height, base linear velocity, and joint position, before and after world-model fine-tuning." loading="lazy"></a>
+        <figcaption>Top: held-out multi-step RMSE. Middle and bottom: trajectories before and after fine-tuning, with ground-truth resets every 20 steps. The dataset contains 30 episodes: 20 training, five validation, and five test.</figcaption>
+      </figure>
+      <p class="text-width">After fine-tuning, Humanoid-WM achieves lower mean 20-step RMSE across all three reported state groups: body height, base linear velocity, and joint position.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <a class="back-top" href="#top">↑ Return to top</a>
+  <p><strong>Humanoid-WM</strong> · Anonymous Authors</p>
+  <p>Code coming soon.</p>
+  <p class="footer-note">Layout inspired by <a href="https://www.tdmpc2.com/" rel="noreferrer">TD-MPC2</a>.</p>
+</footer>
+<dialog id="figure-dialog" aria-label="Expanded research figure">
+  <button class="close-dialog" aria-label="Close expanded figure">×</button>
+  <img id="expanded-figure" alt="">
+  <p id="expanded-caption"></p>
+</dialog>
+</body>
+</html>
