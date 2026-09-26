@@ -63,7 +63,7 @@ The layout is independently implemented, with visual inspiration from https://ww
 
 ## Interactive adaptation demos
 
-`assets/demos/adaptation-{hwm,lift}-{0,22000}.html` contains the initial and 22,000-step trajectories. The page groups 22,000 under the approximate 20,000-step comparison and discloses the actual checkpoint. Load buttons defer the 35 MB HTML downloads. Three.js 0.150.1, lil-gui 0.18.0, and Brax v0.9.1 viewer modules and licenses are bundled under `assets/vendor/`, so the viewers need no W&B account or external scripts. Trajectory data is retained unchanged.
+`assets/demos/adaptation-{hwm,lift}-{0,22000}.html` contains the initial and 22,000-step trajectories. Step 0 displays one shared initial checkpoint for both methods, using the Humanoid-WM run’s initial rollout. The page groups 22,000 under the approximate 20,000-step comparison and discloses the actual checkpoint. Load buttons defer the 35 MB HTML downloads. Three.js 0.150.1, lil-gui 0.18.0, and Brax v0.9.1 viewer modules and licenses are bundled under `assets/vendor/`, so the viewers need no W&B account or external scripts. Trajectory data is retained unchanged.
 
 ## Box-carrying demos
 
