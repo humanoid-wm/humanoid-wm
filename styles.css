@@ -35,11 +35,6 @@
 #prediction,#adaptation{background:#fff}
 
 /* Narrated project video, loaded only when the viewer starts playback. */
-.project-video{padding-bottom:48px;scroll-margin-top:calc(var(--nav-height,72px) + 16px)}
-.project-video-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px}
-.project-video-heading h2{font-size:27px;text-align:left;margin:0}
-.project-video-heading p,.project-video-links{font-size:14px;color:var(--muted)}
-.project-video-heading p{margin:0}
+.project-video{width:min(840px,calc(100% - 64px));margin-inline:auto;padding-bottom:56px;scroll-margin-top:calc(var(--nav-height,72px) + 16px)}
 .project-video>video{display:block;width:100%;height:auto;aspect-ratio:16/9;border:1px solid var(--line);border-radius:12px;background:white}
-.project-video-links{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
-@media(max-width:600px){.project-video-heading,.project-video-links{align-items:flex-start;flex-direction:column;gap:6px}.project-video-heading h2{font-size:25px}.project-video{padding-bottom:36px}.project-video>video{border-radius:8px}}
+@media(max-width:600px){.project-video{width:calc(100% - 48px);padding-bottom:40px}.project-video>video{border-radius:8px}}

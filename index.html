@@ -37,26 +37,21 @@
 
 
 <main id="main">
-  <section id="video" class="project-video wide" aria-labelledby="project-video-title">
-    <div class="project-video-heading">
-      <h2 id="project-video-title">Project Video</h2>
-      <p>2 min 56 sec · English narration</p>
-    </div>
+  <section id="video" class="project-video" aria-labelledby="project-video-title">
+    <h2 id="project-video-title">Project Video</h2>
     <video controls playsinline preload="none" width="1280" height="720" poster="assets/videos/project-video-v4.webp" aria-label="Humanoid-WM narrated project video">
       <source src="assets/videos/project-video-v4.mp4" type="video/mp4">
       Your browser does not support embedded video. <a href="assets/videos/project-video-v4.mp4">Open the project video</a>.
     </video>
-    <div class="project-video-links"><span>English subtitles included</span><a href="assets/videos/project-video-v4.mp4" download="Humanoid-WM_ICRA2027.mp4">Download video · MP4 · 18.4 MB ↓</a></div>
   </section>
   <section id="overview" class="overview wide" aria-labelledby="overview-title">
-    <h2 id="overview-title" class="sr-only">Overview</h2>
     <div class="overview-layout">
       <figure class="framework-figure">
         <a href="assets/framework.webp" class="zoomable" data-lightbox aria-label="Enlarge the Humanoid-WM framework"><img src="assets/framework.webp" width="1186" height="1227" alt="Humanoid-WM predicts forces at abstract body contact points and combines them with Lagrangian dynamics, supporting learning, fine-tuning, and test-time planning." fetchpriority="high"></a>
       </figure>
       <div class="overview-copy">
         <p class="section-kicker">One world model. Three capabilities.</p>
-        <h2>Learn the interactions.<br>Keep the physics.</h2>
+        <h2 id="overview-title">Overview</h2>
         <p>Predict contact forces instead of learning whole-body dynamics from scratch. Humanoid-WM combines learned interactions with analytical rigid-body dynamics to support learning and planning.</p>
         <ol class="capabilities">
           <li><span>01</span><div><h3>Learn from scratch</h3><p>Train whole-body tracking policies with limited environment interaction.</p></div></li>
