@@ -50,3 +50,31 @@ for (const mount of document.querySelectorAll('[data-demo-src]')) {
     mount.append(frame);
   });
 }
+
+const siteNav = document.querySelector('.site-nav');
+const sectionLinks = [...siteNav.querySelectorAll('.nav-sections a')];
+const navTargets = sectionLinks.map(link => document.querySelector(link.getAttribute('href')));
+let navTickPending = false;
+function updateCurrentSection() {
+  const boundary = siteNav.offsetHeight + 100;
+  let current = 0;
+  navTargets.forEach((section, index) => {
+    if (section.getBoundingClientRect().top <= boundary) current = index;
+  });
+  sectionLinks.forEach((link, index) => {
+    if (index === current) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+  navTickPending = false;
+}
+new ResizeObserver(() => {
+  document.documentElement.style.setProperty('--nav-height', `${siteNav.offsetHeight}px`);
+  updateCurrentSection();
+}).observe(siteNav);
+window.addEventListener('scroll', () => {
+  if (!navTickPending) {
+    navTickPending = true;
+    requestAnimationFrame(updateCurrentSection);
+  }
+}, { passive: true });
+updateCurrentSection();
