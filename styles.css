@@ -32,4 +32,4 @@
 @media(max-width:850px){.nav-inner{width:calc(100% - 36px);flex-wrap:wrap;gap:0;padding-top:10px}.nav-brand{flex:1}.site-nav .unavailable{margin-left:auto}.nav-sections{order:3;flex-basis:100%;justify-content:flex-start;overflow-x:auto;gap:6px;padding:9px 0 10px;scrollbar-width:thin}.nav-sections a{font-size:13px;padding:8px 12px}.method-flow>div{padding:25px}.method-flow .step{margin-bottom:18px}}
 @media(prefers-reduced-motion:reduce){.nav-sections a{transition:none}}
 
-#prediction{background:#fff}
+#prediction,#adaptation{background:#fff}
