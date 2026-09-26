@@ -32,7 +32,7 @@ The supplied workflow stages only `index.html`, `styles.css`, `script.js`, `.noj
 - The only external link is the design-reference credit to TD-MPC2; it uses `noreferrer`.
 - `noindex`, `nofollow`, and `robots.txt` request that crawlers avoid the page. They do not provide access control or guarantee anonymity.
 - Original `.tex`, `.bib`, PDF, PPTX, and unrelated figures are intentionally absent from this package.
-- No compiled manuscript PDF or demonstration video was supplied; no placeholder paper or video links are shown.
+- No compiled manuscript PDF was supplied; no placeholder paper link is shown. Twelve supplied training-progress videos appear in the Learning from scratch section.
 - Code availability is displayed as plain status text, not a broken or inactive link.
 - Conference acceptance, publication status, and official ICRA 2027 policy compliance are not asserted.
 
@@ -41,7 +41,7 @@ The supplied workflow stages only `index.html`, `styles.css`, `script.js`, `.noj
 - `index.html`: title, abstract, text, reported results, and figure descriptions.
 - `styles.css`: responsive layout, typography, and red accent color.
 - `script.js`: accessible figure enlargement dialog; Escape closes it.
-- `assets/`: five research figures and a simple favicon.
+- `assets/`: five research figures, a simple favicon, and twelve training videos with poster images.
 
 When code or the paper becomes available, add a link only after checking the destination for author-identifying information. Replace the relevant Code status in the header and footer together.
 
@@ -56,3 +56,7 @@ When code or the paper becomes available, add a link only after checking the des
 | `prediction.webp` | `fig3_world_model_prediction.pdf` |
 
 The layout is independently implemented, with visual inspiration from https://www.tdmpc2.com/. No source code or media from the reference website is included.
+
+## Training videos
+
+`assets/videos/{motion}-{method}.mp4` covers walk, run, jump, and fight for hwm (Humanoid-WM), lift (LIFT), and mbpo (MBPO). HWM fight uses the supplied `fight1_hwm` clip. Web versions use H.264, CRF 26, original resolution and frame rate, and fast-start playback; metadata and audio are omitted. Original training-step overlays and timing are retained. Players load on demand, with per-motion playback controls. Compare the embedded environment-step labels rather than assuming timestamps correspond to equal training budgets.
