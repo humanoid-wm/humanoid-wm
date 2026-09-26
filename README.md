@@ -79,3 +79,5 @@ Eight supplied interactive rollouts compare the deterministic policy with MPPI (
 | `box-mppi-3kg.html` | `mppi_p1p4_pop30k_3kg_off0_2_seed8.html` |
 | `box-policy-4kg.html` | `demo_det_off0p2_4p0kg.html` |
 | `box-mppi-4kg.html` | `mppi_p1p4_pop30k_4kg_off0_2_seed148.html` |
+
+Learning results pair the Run, Walk, and Jump curves with their respective three-method training videos. `learning-{run,walk,jump}.svg` are exact viewBox crops embedding the original WebP, with no regenerated curve data. Fight is displayed as a separate additional experiment row.

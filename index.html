@@ -68,102 +68,107 @@
     <p class="method-note">Trained end to end from state transitions. <strong>No direct force supervision.</strong></p>
   </section>
 
-  <section class="section results wide" id="results">
+  <section class="section results wide learning-results" id="results">
     <p class="section-kicker centered">01 / Learning</p>
     <h2>Sample-Efficient Whole-Body Control</h2>
-    <p class="intro">Learning Run, Walk, and Jump from scratch in Isaac Sim, using reference motions from LAFAN1.</p>
-    <figure>
-      <a href="assets/learning.webp" class="zoomable" data-lightbox aria-label="Enlarge whole-body learning results"><img src="assets/learning.webp" width="2551" height="753" alt="Evaluation-return curves for Run, Walk, and Jump comparing Humanoid-WM, LIFT, MBPO, PPO, and SAC." loading="lazy"></a>
-      <figcaption>Evaluation returns averaged over eight random seeds. The horizontal axis uses a piecewise-linear scale, expanding 0–0.2M and compressing 0.2–20M environment transitions. Model-generated transitions are excluded.</figcaption>
-    </figure>
+    <p class="intro">Learning Run, Walk, and Jump from scratch in Isaac Sim, using reference motions from LAFAN1. Each row pairs evaluation returns with training-progress videos from Humanoid-WM, LIFT, and MBPO. An additional Fight experiment is shown separately below.</p>
+    <div class="curve-legend" aria-label="Learning curve legend"><span style="--curve:#9467bd">LIFT</span><span style="--curve:#8c564b">MBPO</span><span style="--curve:#d62728">Humanoid-WM</span><span style="--curve:#1f77b4">PPO</span><span style="--curve:#2ca02c">SAC</span></div>
+    <p class="figure-caption learning-caption">Evaluation returns averaged over eight random seeds. The horizontal axis uses a piecewise-linear scale, expanding 0–0.2M and compressing 0.2–20M environment transitions. Model-generated transitions are excluded. Video training budgets are shown by the embedded environment-step labels.</p>
+    <div id="training-videos" class="learning-rows">
+      <div class="motion-group learning-row" aria-labelledby="motion-run">
+        <div class="motion-heading"><h3 id="motion-run">Run</h3><div class="video-actions"><button type="button" data-play-group>Play all three</button><button type="button" data-pause-group>Pause</button><button type="button" data-restart-group>Restart</button></div></div>
+        <div class="learning-row-content">
+          <figure class="learning-curve"><a href="assets/learning-run.svg" class="zoomable" data-lightbox aria-label="Enlarge run learning curve"><img src="assets/learning-run.svg" width="810" height="653" alt="Run evaluation-return curves comparing Humanoid-WM, LIFT, MBPO, PPO, and SAC." loading="lazy"></a></figure>
+          <div class="video-grid">
+            <figure class="video-card">
+              <figcaption>Humanoid-WM</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/run-hwm.webp" aria-label="Humanoid-WM: run training progress"><source src="assets/videos/run-hwm.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/run-hwm.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/run-hwm.mp4">Open video ↗</a>
+            </figure>
+            <figure class="video-card">
+              <figcaption>LIFT</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/run-lift.webp" aria-label="LIFT: run training progress"><source src="assets/videos/run-lift.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/run-lift.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/run-lift.mp4">Open video ↗</a>
+            </figure>
+            <figure class="video-card">
+              <figcaption>MBPO</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/run-mbpo.webp" aria-label="MBPO: run training progress"><source src="assets/videos/run-mbpo.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/run-mbpo.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/run-mbpo.mp4">Open video ↗</a>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="motion-group learning-row" aria-labelledby="motion-walk">
+        <div class="motion-heading"><h3 id="motion-walk">Walk</h3><div class="video-actions"><button type="button" data-play-group>Play all three</button><button type="button" data-pause-group>Pause</button><button type="button" data-restart-group>Restart</button></div></div>
+        <div class="learning-row-content">
+          <figure class="learning-curve"><a href="assets/learning-walk.svg" class="zoomable" data-lightbox aria-label="Enlarge walk learning curve"><img src="assets/learning-walk.svg" width="800" height="653" alt="Walk evaluation-return curves comparing Humanoid-WM, LIFT, MBPO, PPO, and SAC." loading="lazy"></a></figure>
+          <div class="video-grid">
+            <figure class="video-card">
+              <figcaption>Humanoid-WM</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/walk-hwm.webp" aria-label="Humanoid-WM: walk training progress"><source src="assets/videos/walk-hwm.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/walk-hwm.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/walk-hwm.mp4">Open video ↗</a>
+            </figure>
+            <figure class="video-card">
+              <figcaption>LIFT</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/walk-lift.webp" aria-label="LIFT: walk training progress"><source src="assets/videos/walk-lift.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/walk-lift.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/walk-lift.mp4">Open video ↗</a>
+            </figure>
+            <figure class="video-card">
+              <figcaption>MBPO</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/walk-mbpo.webp" aria-label="MBPO: walk training progress"><source src="assets/videos/walk-mbpo.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/walk-mbpo.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/walk-mbpo.mp4">Open video ↗</a>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="motion-group learning-row" aria-labelledby="motion-jump">
+        <div class="motion-heading"><h3 id="motion-jump">Jump</h3><div class="video-actions"><button type="button" data-play-group>Play all three</button><button type="button" data-pause-group>Pause</button><button type="button" data-restart-group>Restart</button></div></div>
+        <div class="learning-row-content">
+          <figure class="learning-curve"><a href="assets/learning-jump.svg" class="zoomable" data-lightbox aria-label="Enlarge jump learning curve"><img src="assets/learning-jump.svg" width="796" height="653" alt="Jump evaluation-return curves comparing Humanoid-WM, LIFT, MBPO, PPO, and SAC." loading="lazy"></a></figure>
+          <div class="video-grid">
+            <figure class="video-card">
+              <figcaption>Humanoid-WM</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/jump-hwm.webp" aria-label="Humanoid-WM: jump training progress"><source src="assets/videos/jump-hwm.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/jump-hwm.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/jump-hwm.mp4">Open video ↗</a>
+            </figure>
+            <figure class="video-card">
+              <figcaption>LIFT</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/jump-lift.webp" aria-label="LIFT: jump training progress"><source src="assets/videos/jump-lift.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/jump-lift.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/jump-lift.mp4">Open video ↗</a>
+            </figure>
+            <figure class="video-card">
+              <figcaption>MBPO</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/jump-mbpo.webp" aria-label="MBPO: jump training progress"><source src="assets/videos/jump-mbpo.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/jump-mbpo.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/jump-mbpo.mp4">Open video ↗</a>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="motion-group learning-row" aria-labelledby="motion-fight">
+        <div class="motion-heading"><h3 id="motion-fight">Fight · Additional experiment</h3><div class="video-actions"><button type="button" data-play-group>Play all three</button><button type="button" data-pause-group>Pause</button><button type="button" data-restart-group>Restart</button></div></div>
+        <div class="learning-row-content">
+          <div class="fight-description"><p class="section-kicker">Additional reference motion</p><p>Training from scratch on the Fight trajectory.</p><p class="figure-caption">A separate experiment, shown as a three-method video comparison.</p></div>
+          <div class="video-grid">
+            <figure class="video-card">
+              <figcaption>Humanoid-WM</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/fight-hwm.webp" aria-label="Humanoid-WM: fight training progress"><source src="assets/videos/fight-hwm.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/fight-hwm.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/fight-hwm.mp4">Open video ↗</a>
+            </figure>
+            <figure class="video-card">
+              <figcaption>LIFT</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/fight-lift.webp" aria-label="LIFT: fight training progress"><source src="assets/videos/fight-lift.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/fight-lift.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/fight-lift.mp4">Open video ↗</a>
+            </figure>
+            <figure class="video-card">
+              <figcaption>MBPO</figcaption>
+              <video controls muted playsinline preload="none" poster="assets/videos/fight-mbpo.webp" aria-label="MBPO: fight training progress"><source src="assets/videos/fight-mbpo.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/fight-mbpo.mp4">Open the video</a>.</video>
+              <a class="video-download" href="assets/videos/fight-mbpo.mp4">Open video ↗</a>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="finding"><strong>About 100× fewer environment interactions</strong><p>Humanoid-WM attains strong tracking returns with approximately 1/100 as many interactions as the model-free baselines. SAC and PPO can reach comparable or higher final returns. Humanoid-WM outperforms LIFT on Run and Walk and performs comparably on Jump.</p></div>
-  </section>
-
-  <section class="section wide training-videos" id="training-videos" aria-labelledby="training-videos-title">
-    <p class="section-kicker centered">Learning from scratch / Videos</p>
-    <h2 id="training-videos-title">Training Progress Across Four Reference Motions</h2>
-    <p class="intro">Humanoid-WM, LIFT, and MBPO trained from scratch on Walk, Run, Jump, and Fight reference trajectories. Each video shows performance at successive training stages; refer to the environment-step labels within each video for the training budget.</p>
-    <p class="video-note">Compare the three methods within each reference motion. Videos retain the supplied playback speed. Matching playback times do not necessarily represent the same training step.</p>
-    <div class="motion-group" aria-labelledby="motion-walk">
-      <div class="motion-heading"><h3 id="motion-walk">Walk</h3><div class="video-actions"><button type="button" data-play-group>Play all three</button><button type="button" data-pause-group>Pause</button><button type="button" data-restart-group>Restart</button></div></div>
-      <div class="video-grid">
-        <figure class="video-card">
-          <figcaption>Humanoid-WM</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/walk-hwm.webp" aria-label="Humanoid-WM: walk training progress"><source src="assets/videos/walk-hwm.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/walk-hwm.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/walk-hwm.mp4">Open video ↗</a>
-        </figure>
-        <figure class="video-card">
-          <figcaption>LIFT</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/walk-lift.webp" aria-label="LIFT: walk training progress"><source src="assets/videos/walk-lift.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/walk-lift.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/walk-lift.mp4">Open video ↗</a>
-        </figure>
-        <figure class="video-card">
-          <figcaption>MBPO</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/walk-mbpo.webp" aria-label="MBPO: walk training progress"><source src="assets/videos/walk-mbpo.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/walk-mbpo.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/walk-mbpo.mp4">Open video ↗</a>
-        </figure>
-      </div>
-    </div>
-    <div class="motion-group" aria-labelledby="motion-run">
-      <div class="motion-heading"><h3 id="motion-run">Run</h3><div class="video-actions"><button type="button" data-play-group>Play all three</button><button type="button" data-pause-group>Pause</button><button type="button" data-restart-group>Restart</button></div></div>
-      <div class="video-grid">
-        <figure class="video-card">
-          <figcaption>Humanoid-WM</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/run-hwm.webp" aria-label="Humanoid-WM: run training progress"><source src="assets/videos/run-hwm.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/run-hwm.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/run-hwm.mp4">Open video ↗</a>
-        </figure>
-        <figure class="video-card">
-          <figcaption>LIFT</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/run-lift.webp" aria-label="LIFT: run training progress"><source src="assets/videos/run-lift.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/run-lift.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/run-lift.mp4">Open video ↗</a>
-        </figure>
-        <figure class="video-card">
-          <figcaption>MBPO</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/run-mbpo.webp" aria-label="MBPO: run training progress"><source src="assets/videos/run-mbpo.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/run-mbpo.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/run-mbpo.mp4">Open video ↗</a>
-        </figure>
-      </div>
-    </div>
-    <div class="motion-group" aria-labelledby="motion-jump">
-      <div class="motion-heading"><h3 id="motion-jump">Jump</h3><div class="video-actions"><button type="button" data-play-group>Play all three</button><button type="button" data-pause-group>Pause</button><button type="button" data-restart-group>Restart</button></div></div>
-      <div class="video-grid">
-        <figure class="video-card">
-          <figcaption>Humanoid-WM</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/jump-hwm.webp" aria-label="Humanoid-WM: jump training progress"><source src="assets/videos/jump-hwm.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/jump-hwm.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/jump-hwm.mp4">Open video ↗</a>
-        </figure>
-        <figure class="video-card">
-          <figcaption>LIFT</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/jump-lift.webp" aria-label="LIFT: jump training progress"><source src="assets/videos/jump-lift.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/jump-lift.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/jump-lift.mp4">Open video ↗</a>
-        </figure>
-        <figure class="video-card">
-          <figcaption>MBPO</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/jump-mbpo.webp" aria-label="MBPO: jump training progress"><source src="assets/videos/jump-mbpo.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/jump-mbpo.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/jump-mbpo.mp4">Open video ↗</a>
-        </figure>
-      </div>
-    </div>
-    <div class="motion-group" aria-labelledby="motion-fight">
-      <div class="motion-heading"><h3 id="motion-fight">Fight</h3><div class="video-actions"><button type="button" data-play-group>Play all three</button><button type="button" data-pause-group>Pause</button><button type="button" data-restart-group>Restart</button></div></div>
-      <div class="video-grid">
-        <figure class="video-card">
-          <figcaption>Humanoid-WM</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/fight-hwm.webp" aria-label="Humanoid-WM: fight training progress"><source src="assets/videos/fight-hwm.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/fight-hwm.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/fight-hwm.mp4">Open video ↗</a>
-        </figure>
-        <figure class="video-card">
-          <figcaption>LIFT</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/fight-lift.webp" aria-label="LIFT: fight training progress"><source src="assets/videos/fight-lift.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/fight-lift.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/fight-lift.mp4">Open video ↗</a>
-        </figure>
-        <figure class="video-card">
-          <figcaption>MBPO</figcaption>
-          <video controls muted playsinline preload="none" poster="assets/videos/fight-mbpo.webp" aria-label="MBPO: fight training progress"><source src="assets/videos/fight-mbpo.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/fight-mbpo.mp4">Open the video</a>.</video>
-          <a class="video-download" href="assets/videos/fight-mbpo.mp4">Open video ↗</a>
-        </figure>
-      </div>
-    </div>
   </section>
 
   <section class="section shaded" id="adaptation">
