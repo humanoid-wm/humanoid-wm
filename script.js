@@ -29,3 +29,14 @@ for (const group of document.querySelectorAll('.motion-group')) {
     for (const video of videos) { video.pause(); video.currentTime = 0; }
   });
 }
+
+for (const mount of document.querySelectorAll('[data-demo-src]')) {
+  mount.querySelector('.load-demo').addEventListener('click', () => {
+    const frame = document.createElement('iframe');
+    frame.title = mount.dataset.demoTitle;
+    frame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+    frame.referrerPolicy = 'no-referrer';
+    frame.src = mount.dataset.demoSrc;
+    mount.replaceChildren(frame);
+  });
+}

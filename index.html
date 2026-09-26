@@ -22,6 +22,7 @@
     <a class="pill" href="#method"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H4zm16 0h-4a3 3 0 0 0-3 3v14a4 4 0 0 1 4-2h3z"/></svg>Method</a>
     <a class="pill" href="#results"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v17h17M8 16v-5m5 5V6m5 10V9"/></svg>Results</a>
     <a class="pill" href="#training-videos">Training Videos</a>
+    <a class="pill" href="#box-demos">Planning Demos</a>
     <span class="pill unavailable" aria-label="Code: coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg>Code <span class="soon">Coming Soon</span></span>
   </div>
 </header>
@@ -175,6 +176,36 @@
         <figcaption>Evaluation return and episode length during fine-tuning on the LAFAN1 fighting motion. Deterministic actions collect environment data; stochastic exploration occurs in model rollouts.</figcaption>
       </figure>
       <p class="text-width">After an initial performance drop, Humanoid-WM recovers to a high evaluation reward and longer episodes. The explicit mapping from local forces to generalized forces supports adaptation on a task with irregular, nonperiodic contact transitions.</p>
+      <div class="adaptation-demos" id="adaptation-demos">
+        <h3 class="demo-title">Interactive Fine-Tuning Demonstrations</h3>
+        <p class="video-note">Compare the initial policy with the approximately 20,000-step stage (actual checkpoint: 22,000 environment steps). Load a 3D demo to play the trajectory and rotate or zoom the camera.</p>
+        <h4 class="demo-stage">Step 0 · Before fine-tuning</h4>
+        <div class="demo-grid">
+          <article class="demo-card">
+            <h5>Humanoid-WM</h5>
+            <div class="demo-mount" data-demo-src="assets/demos/adaptation-hwm-0.html" data-demo-title="Humanoid-WM, fine-tuning step 0"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 35 MB</span></button></div>
+            <a href="assets/demos/adaptation-hwm-0.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+          </article>
+          <article class="demo-card">
+            <h5>LIFT</h5>
+            <div class="demo-mount" data-demo-src="assets/demos/adaptation-lift-0.html" data-demo-title="LIFT, fine-tuning step 0"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 35 MB</span></button></div>
+            <a href="assets/demos/adaptation-lift-0.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+          </article>
+        </div>
+        <h4 class="demo-stage">≈ 20,000 steps · After fine-tuning</h4>
+        <div class="demo-grid">
+          <article class="demo-card">
+            <h5>Humanoid-WM</h5>
+            <div class="demo-mount" data-demo-src="assets/demos/adaptation-hwm-22000.html" data-demo-title="Humanoid-WM, fine-tuning step 22000"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 35 MB</span></button></div>
+            <a href="assets/demos/adaptation-hwm-22000.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+          </article>
+          <article class="demo-card">
+            <h5>LIFT</h5>
+            <div class="demo-mount" data-demo-src="assets/demos/adaptation-lift-22000.html" data-demo-title="LIFT, fine-tuning step 22000"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 35 MB</span></button></div>
+            <a href="assets/demos/adaptation-lift-22000.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -205,6 +236,62 @@
       </table>
     </div>
     <p class="figure-caption">Selected settings from the manuscript. Overall 95% confidence intervals: deterministic policy, 56.3–60.6%; MPPI K = 5,000, 64.6–68.7%. The deterministic policy remains strongest at the training mass; MPPI K = 5,000 improves success at all three heavier masses.</p>
+    <div class="adaptation-demos" id="box-demos">
+      <h3 class="demo-title">Box Carrying: Policy vs. MPPI Planning</h3>
+      <p class="video-note">Interactive rollouts with 1, 2, 3, and 4 kg boxes. Compare the deterministic policy with MPPI planning (K = 30,000). Click to load each trajectory, then rotate or zoom the camera; playback controls are in the viewer's Controls menu.</p>
+      <h4 class="demo-stage">1 kg · Training mass</h4>
+      <div class="demo-grid box-demo-grid">
+        <article class="demo-card">
+          <h5>Policy</h5>
+          <div class="demo-mount" data-demo-src="assets/demos/box-policy-1kg.html" data-demo-title="Policy, 1 kg box"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 48 MB</span></button></div>
+          <a href="assets/demos/box-policy-1kg.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+        </article>
+        <article class="demo-card">
+          <h5>MPPI Planning</h5>
+          <div class="demo-mount" data-demo-src="assets/demos/box-mppi-1kg.html" data-demo-title="MPPI Planning, 1 kg box"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 48 MB</span></button></div>
+          <a href="assets/demos/box-mppi-1kg.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+        </article>
+      </div>
+      <h4 class="demo-stage">2 kg</h4>
+      <div class="demo-grid box-demo-grid">
+        <article class="demo-card">
+          <h5>Policy</h5>
+          <div class="demo-mount" data-demo-src="assets/demos/box-policy-2kg.html" data-demo-title="Policy, 2 kg box"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 48 MB</span></button></div>
+          <a href="assets/demos/box-policy-2kg.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+        </article>
+        <article class="demo-card">
+          <h5>MPPI Planning</h5>
+          <div class="demo-mount" data-demo-src="assets/demos/box-mppi-2kg.html" data-demo-title="MPPI Planning, 2 kg box"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 48 MB</span></button></div>
+          <a href="assets/demos/box-mppi-2kg.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+        </article>
+      </div>
+      <h4 class="demo-stage">3 kg</h4>
+      <div class="demo-grid box-demo-grid">
+        <article class="demo-card">
+          <h5>Policy</h5>
+          <div class="demo-mount" data-demo-src="assets/demos/box-policy-3kg.html" data-demo-title="Policy, 3 kg box"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 48 MB</span></button></div>
+          <a href="assets/demos/box-policy-3kg.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+        </article>
+        <article class="demo-card">
+          <h5>MPPI Planning</h5>
+          <div class="demo-mount" data-demo-src="assets/demos/box-mppi-3kg.html" data-demo-title="MPPI Planning, 3 kg box"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 48 MB</span></button></div>
+          <a href="assets/demos/box-mppi-3kg.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+        </article>
+      </div>
+      <h4 class="demo-stage">4 kg</h4>
+      <div class="demo-grid box-demo-grid">
+        <article class="demo-card">
+          <h5>Policy</h5>
+          <div class="demo-mount" data-demo-src="assets/demos/box-policy-4kg.html" data-demo-title="Policy, 4 kg box"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 48 MB</span></button></div>
+          <a href="assets/demos/box-policy-4kg.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+        </article>
+        <article class="demo-card">
+          <h5>MPPI Planning</h5>
+          <div class="demo-mount" data-demo-src="assets/demos/box-mppi-4kg.html" data-demo-title="MPPI Planning, 4 kg box"><button type="button" class="load-demo">Load interactive demo <span>3D trajectory · approximately 48 MB</span></button></div>
+          <a href="assets/demos/box-mppi-4kg.html" target="_blank" rel="noopener">Open full-screen demo ↗</a>
+        </article>
+      </div>
+    </div>
     <details><summary>Planning budget and inference time</summary><div class="details-content"><p>Larger planning populations generally improve success, but the gains are not monotonic. K = 5,000 gives the highest observed overall success; increasing K to 30,000 improves the 4 kg result but does not improve overall success.</p><p>With horizon H = 12 on a single NVIDIA RTX 4090, model-inference time is 145.32 ms/step for K = 5,000 and 675.07 ms/step for K = 30,000. These are per-step model-inference measurements, not end-to-end real-time control rates.</p></div></details>
   </section>
 

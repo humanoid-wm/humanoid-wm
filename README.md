@@ -60,3 +60,22 @@ The layout is independently implemented, with visual inspiration from https://ww
 ## Training videos
 
 `assets/videos/{motion}-{method}.mp4` covers walk, run, jump, and fight for hwm (Humanoid-WM), lift (LIFT), and mbpo (MBPO). HWM fight uses the supplied `fight1_hwm` clip. Web versions use H.264, CRF 26, original resolution and frame rate, and fast-start playback; metadata and audio are omitted. Original training-step overlays and timing are retained. Players load on demand, with per-motion playback controls. Compare the embedded environment-step labels rather than assuming timestamps correspond to equal training budgets.
+
+## Interactive adaptation demos
+
+`assets/demos/adaptation-{hwm,lift}-{0,22000}.html` contains the initial and 22,000-step trajectories. The page groups 22,000 under the approximate 20,000-step comparison and discloses the actual checkpoint. Load buttons defer the 35 MB HTML downloads. Three.js 0.150.1, lil-gui 0.18.0, and Brax v0.9.1 viewer modules and licenses are bundled under `assets/vendor/`, so the viewers need no W&B account or external scripts. Trajectory data is retained unchanged.
+
+## Box-carrying demos
+
+Eight supplied interactive rollouts compare the deterministic policy with MPPI (population 30,000), for 1–4 kg boxes. The simulation data is unchanged; viewer dependencies are served locally.
+
+| Website file | Supplied file |
+| --- | --- |
+| `box-policy-1kg.html` | `demo_det_off0p2_1p0kg.html` |
+| `box-mppi-1kg.html` | `mppi_p1p4_pop30k_1kg_off0_2_seed0.html` |
+| `box-policy-2kg.html` | `demo_det_off0p2_2p0kg.html` |
+| `box-mppi-2kg.html` | `mppi_p1p4_pop30k_2kg_off0_2_seed0.html` |
+| `box-policy-3kg.html` | `demo_det_off0p2_3p0kg.html` |
+| `box-mppi-3kg.html` | `mppi_p1p4_pop30k_3kg_off0_2_seed8.html` |
+| `box-policy-4kg.html` | `demo_det_off0p2_4p0kg.html` |
+| `box-mppi-4kg.html` | `mppi_p1p4_pop30k_4kg_off0_2_seed148.html` |
