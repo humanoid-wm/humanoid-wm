@@ -31,12 +31,22 @@ for (const group of document.querySelectorAll('.motion-group')) {
 }
 
 for (const mount of document.querySelectorAll('[data-demo-src]')) {
-  mount.querySelector('.load-demo').addEventListener('click', () => {
+  mount.querySelector('.load-demo').addEventListener('click', (event) => {
+    const button = event.currentTarget;
+    button.disabled = true;
+    button.textContent = 'Loading interactive demo…';
+    mount.setAttribute('aria-busy', 'true');
     const frame = document.createElement('iframe');
     frame.title = mount.dataset.demoTitle;
     frame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
     frame.referrerPolicy = 'no-referrer';
     frame.src = mount.dataset.demoSrc;
-    mount.replaceChildren(frame);
+    frame.classList.add('demo-loading');
+    frame.addEventListener('load', () => {
+      frame.classList.remove('demo-loading');
+      mount.replaceChildren(frame);
+      mount.removeAttribute('aria-busy');
+    }, { once: true });
+    mount.append(frame);
   });
 }
