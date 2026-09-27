@@ -87,6 +87,7 @@
     <p class="section-kicker centered">01 / Learning</p>
     <h2>Sample-Efficient Whole-Body Control</h2>
     <p class="intro">Learning Run, Walk, and Jump from scratch in Isaac Sim, using reference motions from LAFAN1. Each row pairs evaluation returns with training-progress videos from Humanoid-WM, LIFT, and MBPO. An additional Fight experiment is shown separately below.</p>
+    <p class="intro"><strong>Comparison setup.</strong> Humanoid-WM, LIFT, and MBPO use a shared training procedure, with hyperparameters largely consistent with those in the LIFT paper. Only the dynamics model differs across these model-based methods.</p>
     <div class="curve-legend" aria-label="Learning curve legend"><span style="--curve:#9467bd">LIFT</span><span style="--curve:#8c564b">MBPO</span><span style="--curve:#d62728">Humanoid-WM</span><span style="--curve:#1f77b4">PPO</span><span style="--curve:#2ca02c">SAC</span></div>
     <p class="figure-caption learning-caption">Evaluation returns averaged over eight random seeds. The horizontal axis uses a piecewise-linear scale, expanding 0–0.2M and compressing 0.2–20M environment transitions. Model-generated transitions are excluded. Video training budgets are shown by the embedded environment-step labels.</p>
     <div id="training-videos" class="learning-rows">
@@ -191,6 +192,7 @@
       <p class="section-kicker centered">02 / Adaptation</p>
       <h2>Fine-Tuning in a New Simulator</h2>
       <p class="intro">Transfer a pretrained G1 fighting-motion policy from MuJoCo Playground to Brax, then update both the policy and world model with limited target-environment data.</p>
+      <p class="intro"><strong>Comparison setup.</strong> Humanoid-WM and LIFT use the same fine-tuning procedure, with hyperparameters largely consistent with those in the LIFT paper. Only the dynamics model differs.</p>
       <figure class="medium-figure">
         <a href="assets/adaptation.webp" class="zoomable" data-lightbox aria-label="Enlarge simulator adaptation results"><img src="assets/adaptation.webp" width="2496" height="1116" alt="Fine-tuning curves show Humanoid-WM recovering evaluation return and episode length after an initial drop; LIFT remains low over the evaluated budget." loading="lazy"></a>
         <figcaption>Evaluation return and episode length during fine-tuning on the LAFAN1 fighting motion. Deterministic actions collect environment data; stochastic exploration occurs in model rollouts.</figcaption>
